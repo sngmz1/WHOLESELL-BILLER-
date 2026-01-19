@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing - Wholesale Store</title>
+    <link rel="stylesheet" href="aproj.css">
+    <!-- SheetJS for Excel export with styling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+</head>
+<body>
+
+    <!-- STORE TITLE -->
+    <div class="store-title-card">
+        <span class="emoji">📦</span>
+        <h1>Wholesale Product Store</h1>
+        <span class="badge">BILLING SYSTEM</span>
+    </div>
+
+    <!-- MENU -->
+    <div class="menu-wrapper">
+        <button class="menu-btn" id="menuBtn">⋮</button>
+        <div class="menu-dropdown" id="menuDropdown">
+            <button id="addItemBtn">➕ Add Item</button>
+            <button id="historyBtn">📋 Bill History</button>
+        </div>
+    </div>
+
+    <!-- HEADER (❗ WAS MISSING BEFORE) -->
+    <header>
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search products by name..."
+                autocomplete="off"
+            >
+
+            <button class="filter-btn" onclick="toggleFilter()">🔽 Filters</button>
+
+            <div class="filter-panel" id="filterPanel">
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select id="categoryFilter">
+                        <option value="">All</option>
+                        <option value="pouch">Pouch</option>
+                        <option value="box">Box</option>
+                        <option value="jar">Jar</option>
+                        <option value="hanger">Hanger</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Exact Weight (g)</label>
+                    <input type="number" id="weightExact">
+                </div>
+
+                <div class="filter-group">
+                    <label>MRP Under (₹)</label>
+                    <input type="number" id="mrpUnder">
+                </div>
+
+                <div class="filter-actions">
+                    <button onclick="applyFilters()">Apply</button>
+                    <button onclick="clearFilters()">Clear</button>
+                </div>
+            </div>
+
+            <button onclick="searchProducts()">Search</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="products-section">
+            <div class="products-grid" id="productsGrid"></div>
+            <div class="no-results" id="noResults" style="display:none;">
+                No products found matching your search.
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- FOOTER (NOW WILL SHOW 100%) -->
+    <footer class="app-footer" id="appFooter">
+    <span id="copyrightText"></span>
+
+    <span class="footer-version">v1.0.0 - GitHub - sngmz1</span>
+</footer>
+
+
+    <script src="aproj.js"></script>
+</body>
+</html>
